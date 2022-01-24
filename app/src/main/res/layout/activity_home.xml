@@ -25,34 +25,34 @@
         app:layout_constraintVertical_bias="0.024" />
 
     <Button
-        android:id="@+id/entree"
+        android:id="@+id/btnStarter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="108dp"
+        android:layout_marginTop="116dp"
         android:text="Entrée"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <Button
-        android:id="@+id/dessert"
+        android:id="@+id/btnDessert"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="216dp"
         android:text="Dessert"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="495dp" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/plat"
+        android:id="@+id/btnMainDish"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Plat"
-        app:layout_constraintBottom_toTopOf="@+id/dessert"
+        app:layout_constraintBottom_toTopOf="@+id/btnDessert"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/entree" />
+        app:layout_constraintTop_toBottomOf="@+id/btnEntree" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
