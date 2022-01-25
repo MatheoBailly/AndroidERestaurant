@@ -3,39 +3,43 @@ package fr.isen.bailly.androiderestaurant
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.widget.Button
 //import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import fr.isen.bailly.androiderestaurant.databinding.ActivityHomeBinding
 
 
 class HomeActivity : AppCompatActivity() {
 
+    private lateinit var binding: ActivityHomeBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_home)
+        binding = ActivityHomeBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        val btnStarter = findViewById<Button>(R.id.btnStarter)
-        val btnMainDish = findViewById<Button>(R.id.btnMainDish)
-        val btnDessert = findViewById<Button>(R.id.btnDessert)
+        binding.textWelcome.text = getString(R.string.home_welcome)
+        binding.btnStarters.text = getString(R.string.home_starters)
+        binding.btnMainDishes.text = getString(R.string.home_main_dishes)
+        binding.btnDesserts.text = getString(R.string.home_desserts)
 
-        btnStarter.setOnClickListener{
+        binding.btnStarters.setOnClickListener{
             //Toast.makeText(this@HomeActivity, "Vous avez sélectionné l'entrée", Toast.LENGTH_SHORT).show()
             changeActivity(getString(R.string.home_starters))
         }
 
-        btnMainDish.setOnClickListener{
+        binding.btnMainDishes.setOnClickListener{
             //val toast = Toast.makeText(this@HomeActivity, "Vous avez sélectionné le plat", Toast.LENGTH_SHORT).show()
             changeActivity(getString(R.string.home_main_dishes))
         }
 
-        btnDessert.setOnClickListener{
+        binding.btnDesserts.setOnClickListener{
             //val toast = Toast.makeText(this@HomeActivity, "Vous avez sélectionné le dessert", Toast.LENGTH_SHORT).show()
             changeActivity(getString(R.string.home_desserts))
         }
     }
 
     private fun changeActivity( category: String ) {
-        val changePage = Intent(this@HomeActivity, MainDishActivity::class.java)
+        val changePage = Intent(this@HomeActivity, CategoryActivity::class.java)
         changePage.putExtra("category_type",category)
         Log.i("INFO", "End of HomeActivity")
         startActivity(changePage)

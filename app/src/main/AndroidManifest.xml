@@ -11,13 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidERestaurant">
         <activity
-            android:name=".StarterActivity"
-            android:exported="false" />
-        <activity
-            android:name=".MainDishActivity"
-            android:exported="false" />
-        <activity
-            android:name=".DessertActivity"
+            android:name=".CategoryActivity"
             android:exported="false" />
         <activity
             android:name=".HomeActivity"
