@@ -1,12 +1,20 @@
 package fr.isen.bailly.androiderestaurant
 
+import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import com.android.volley.DefaultRetryPolicy
+import com.android.volley.Request
+import com.android.volley.toolbox.JsonObjectRequest
+import com.android.volley.toolbox.Volley
+import com.google.gson.Gson
 import fr.isen.bailly.androiderestaurant.databinding.ActivityCategoryBinding
+import fr.isen.bailly.androiderestaurant.model.DishModel
+import fr.isen.bailly.androiderestaurant.model.DishResult
+import org.json.JSONObject
 
 class CategoryActivity : AppCompatActivity() {
 
@@ -14,31 +22,56 @@ class CategoryActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         binding = ActivityCategoryBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.categoryTitle.text = intent.getStringExtra("category_type")
+        val category = intent.getStringExtra("category_type")
+        binding.categoryTitle.text = category
 
+        binding.dishList.layoutManager = LinearLayoutManager(this)
+
+        //http request to the API
+        val queue = Volley.newRequestQueue(this)
+        val url = "http://test.api.catering.bluecodegames.com/menu"
+        val jsonObject = JSONObject()
+        jsonObject.put("id_shop","1")
+
+
+        // Request a string response from the provided URL.
+        val request = JsonObjectRequest(
+            Request.Method.POST,url,jsonObject,
+            { response ->
+                val gson = Gson()
+                val dishResult = gson.fromJson(response.toString(), DishResult::class.java)
+                displayDishes(dishResult.data.firstOrNull { it.name_fr == category }?.items ?: listOf())
+                Log.d("", "$response")
+            }, {
+                // Error in request
+                Log.i("","Volley error: $it")
+            })
+
+        // Volley request policy, only one time request to avoid duplicate transaction
+        request.retryPolicy = DefaultRetryPolicy(
+            DefaultRetryPolicy.DEFAULT_TIMEOUT_MS,
+            // 0 means no retry
+            0, // DefaultRetryPolicy.DEFAULT_MAX_RETRIES = 2
+            1f // DefaultRetryPolicy.DEFAULT_BACKOFF_MULT
+        )
+
+        // Add the volley post request to the request queue
+        queue.add(request)
+    }
+
+    private fun displayDishes (dishResult:List<DishModel>){
         // getting the recyclerview by its id
-        val recyclerview = binding.recyclerview
-
-        // this creates a vertical layout Manager
-        recyclerview.layoutManager = LinearLayoutManager(this)
-
-        // ArrayList of class ItemsViewModel
-        val data = ArrayList<ItemsViewModel>()
-
-        // This loop will create 20 Views containing
-        // the image with the count of view
-        for (i in 1..20) {
-            data.add(ItemsViewModel(R.drawable.ic_baseline_folder_24, intent.getStringExtra("category_type")?.dropLast(1) + " " + i))
+        binding.dishList.layoutManager = LinearLayoutManager(this)
+        binding.dishList.adapter = CategoryAdapter(dishResult){
+            val intent = Intent(this, DetailActivity::class.java)
+            intent.putExtra("dish_name", it)
+            startActivity(intent)
         }
 
-        // This will pass the ArrayList to our Adapter
-        val adapter = CustomAdapter(data)
-
-        // Setting the Adapter with the recyclerview
-        recyclerview.adapter = adapter
     }
 }
 

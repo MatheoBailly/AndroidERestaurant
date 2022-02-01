@@ -4,4 +4,7 @@
     <string name="home_starters">Entrées</string>
     <string name="home_main_dishes">Plats</string>
     <string name="home_desserts">Desserts</string>
+    <string name="initValue">1</string>
+    <string name="minus">-</string>
+    <string name="plus">+</string>
 </resources>
