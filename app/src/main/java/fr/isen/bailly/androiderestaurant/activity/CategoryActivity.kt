@@ -1,6 +1,5 @@
-package fr.isen.bailly.androiderestaurant
+package fr.isen.bailly.androiderestaurant.activity
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -11,6 +10,7 @@ import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import com.google.gson.Gson
+import fr.isen.bailly.androiderestaurant.adapter.CategoryAdapter
 import fr.isen.bailly.androiderestaurant.databinding.ActivityCategoryBinding
 import fr.isen.bailly.androiderestaurant.model.DishModel
 import fr.isen.bailly.androiderestaurant.model.DishResult
@@ -23,18 +23,18 @@ class CategoryActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = ActivityCategoryBinding.inflate(layoutInflater)
+        binding=ActivityCategoryBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val category = intent.getStringExtra("category_type")
-        binding.categoryTitle.text = category
+        val category=intent.getStringExtra("category_type")
+        binding.categoryTitle.text=category
 
-        binding.dishList.layoutManager = LinearLayoutManager(this)
+        binding.dishList.layoutManager=LinearLayoutManager(this)
 
         //http request to the API
-        val queue = Volley.newRequestQueue(this)
-        val url = "http://test.api.catering.bluecodegames.com/menu"
-        val jsonObject = JSONObject()
+        val queue=Volley.newRequestQueue(this)
+        val url="http://test.api.catering.bluecodegames.com/menu"
+        val jsonObject=JSONObject()
         jsonObject.put("id_shop","1")
 
 

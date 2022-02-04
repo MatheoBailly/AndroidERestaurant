@@ -4,17 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DetailActivity">
+    tools:context=".activity.DetailActivity">
 
-    <ImageView
+    <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/detailPicture"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:adjustViewBounds="true"
-        android:importantForAccessibility="no"
-        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -24,7 +21,6 @@
         android:layout_height="wrap_content"
         android:text=""
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.476"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/detailPicture" />
 
@@ -40,12 +36,11 @@
         android:id="@+id/detailPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/addToCartButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/detailIngredient"
-        app:layout_constraintVertical_bias="0.811" />
+        app:layout_constraintTop_toBottomOf="@+id/detailIngredient" />
 
     <TextView
         android:id="@+id/detailNumber"
@@ -60,6 +55,7 @@
         android:id="@+id/detailButtonPlus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text=""
         app:layout_constraintBottom_toTopOf="@+id/detailPrice"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.863"
@@ -70,9 +66,20 @@
         android:id="@+id/detailButtonMinus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text=""
         app:layout_constraintBottom_toTopOf="@+id/detailPrice"
         app:layout_constraintEnd_toStartOf="@+id/detailNumber"
         app:layout_constraintHorizontal_bias="0.135"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/detailIngredient" />
+
+    <Button
+        android:id="@+id/addToCartButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/detailIngredient" />
 

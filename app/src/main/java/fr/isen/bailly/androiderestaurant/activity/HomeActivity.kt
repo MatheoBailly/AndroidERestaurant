@@ -1,4 +1,4 @@
-package fr.isen.bailly.androiderestaurant
+package fr.isen.bailly.androiderestaurant.activity
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 //import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import fr.isen.bailly.androiderestaurant.R
 import fr.isen.bailly.androiderestaurant.databinding.ActivityHomeBinding
 
 

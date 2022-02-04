@@ -7,4 +7,17 @@
     <string name="initValue">1</string>
     <string name="minus">-</string>
     <string name="plus">+</string>
+    <string name="addToCart">Ajouter au panier</string>
+    <string name="name">Nom</string>
+    <string name="surname">Prénom</string>
+    <string name="address">Adresse</string>
+    <string name="mail">Email</string>
+    <string name="password">Mot de passe</string>
+    <string name="sign_in">"S'inscrire"</string>
+    <string name="log_in">Se connecter</string>
+    <string name="empty_field">Champ vide</string>
+    <string name="invalid_mail">Email Invalide</string>
+    <string name="error_pwd">Mot de passe trop court (8 caractères)</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

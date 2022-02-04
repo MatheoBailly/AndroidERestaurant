@@ -1,10 +1,11 @@
-package fr.isen.bailly.androiderestaurant
+package fr.isen.bailly.androiderestaurant.adapter
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
+import fr.isen.bailly.androiderestaurant.R
 import fr.isen.bailly.androiderestaurant.databinding.CategoryCellBinding
 import fr.isen.bailly.androiderestaurant.model.DishModel
 
@@ -35,7 +36,6 @@ class CategoryAdapter(val dishes: List<DishModel>, private val onDishClicked: (D
             .error(R.drawable.fond).placeholder(R.drawable.fond)
             .fit()
             .centerInside()
-            //.resize(60,60)
             .into(holder.dishPicture)
 
         holder.itemView.setOnClickListener {

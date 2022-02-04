@@ -1,21 +1,12 @@
-package fr.isen.bailly.androiderestaurant
+package fr.isen.bailly.androiderestaurant.activity
 
 import android.annotation.SuppressLint
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.android.volley.DefaultRetryPolicy
-import com.android.volley.Request
-import com.android.volley.toolbox.JsonObjectRequest
-import com.android.volley.toolbox.Volley
-import com.google.gson.Gson
-import com.squareup.picasso.Picasso
+import fr.isen.bailly.androiderestaurant.R
+import fr.isen.bailly.androiderestaurant.adapter.DetailPictureAdapter
 import fr.isen.bailly.androiderestaurant.databinding.ActivityDetailBinding
 import fr.isen.bailly.androiderestaurant.model.DishModel
-import fr.isen.bailly.androiderestaurant.model.DishResult
-import org.json.JSONObject
 
 class DetailActivity : AppCompatActivity() {
 
@@ -34,13 +25,9 @@ class DetailActivity : AppCompatActivity() {
         binding.detailNumber.text = getString(R.string.initValue)
         binding.detailButtonPlus.text = getString(R.string.plus)
         binding.detailButtonMinus.text = getString(R.string.minus)
-        Picasso.get()
-            .load(if (detail.images[0].isNotEmpty()) detail.images[0] else null)
-            .error(R.drawable.fond).placeholder(R.drawable.fond)
-            //.resize(match_parent, wrap_content)
-            .fit()
-            .centerInside()
-            .into(binding.detailPicture)
+        binding.addToCartButton.text = getString(R.string.addToCart)
+        binding.detailPicture.adapter = DetailPictureAdapter(this,detail.images)
+
         var ingredients = ""
         for (i in detail.ingredients) {
             ingredients += if(i==detail.ingredients.last()){
@@ -69,7 +56,7 @@ class DetailActivity : AppCompatActivity() {
                 nb --
             }
         }else{
-            nb++
+            nb ++
         }
         binding.detailNumber.text = nb.toString()
         changePrice(detail, nb)
