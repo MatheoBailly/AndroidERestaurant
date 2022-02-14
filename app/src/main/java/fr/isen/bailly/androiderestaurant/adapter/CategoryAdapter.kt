@@ -18,8 +18,7 @@ class CategoryAdapter(val dishes: List<DishModel>, private val onDishClicked: (D
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DishViewHolder {
-        val binding = CategoryCellBinding
-            .inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = CategoryCellBinding.inflate(LayoutInflater.from(parent.context), parent, false)
 
         return DishViewHolder(binding)
     }
@@ -32,8 +31,9 @@ class CategoryAdapter(val dishes: List<DishModel>, private val onDishClicked: (D
         holder.dishPrice.text = dish.prices[0].price +"€"
 
         Picasso.get()
-            .load(if(dish.images[0].isNotEmpty())dish.images[0] else null)
-            .error(R.drawable.fond).placeholder(R.drawable.fond)
+            .load(dish.images[0].ifEmpty { null })
+            .error(R.drawable.outline_visibility_off_white_24dp)
+            .placeholder(R.drawable.outline_cached_white_24dp)
             .fit()
             .centerInside()
             .into(holder.dishPicture)

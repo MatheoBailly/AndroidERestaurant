@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="10dp"
-    app:cardElevation="6dp">
+    app:cardElevation="6dp"
+    android:background="#010203">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -28,31 +29,27 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1">
-
             <TextView
                 android:id="@+id/dishName"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginStart="8dp"
                 android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:textColor="#E4289C1A"/>
         </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="2">
-
             <TextView
                 android:id="@+id/dishPrice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:textColor="@color/white"/>
         </RelativeLayout>
-
-
-
     </LinearLayout>
-
 </androidx.cardview.widget.CardView>

@@ -1,23 +1,37 @@
 <resources>
-    <string name="app_name">AndroidERestaurant</string>
-    <string name="home_welcome">Bienvenue sur AndroidERestaurant</string>
+    <string name="app_name">HubertEats</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="home_welcome">Bienvenue sur HubertEats</string>
     <string name="home_starters">Entrées</string>
     <string name="home_main_dishes">Plats</string>
     <string name="home_desserts">Desserts</string>
-    <string name="initValue">1</string>
+    <string name="detail_init_value">1</string>
+    <string name="detail_add_to_basket">Ajouter au panier</string>
+    <string name="euros">€</string>
     <string name="minus">-</string>
     <string name="plus">+</string>
-    <string name="addToCart">Ajouter au panier</string>
+    <string name="carroussel">carroussel</string>
+    <string name="basket_save">/basket.json</string>
+    <string name="connection">Connexion</string>
+    <string name="picture_of_dish">picture of dish</string>
+    <string name="delete">delete</string>
+    <string name="basket_title">Votre Panier</string>
+    <string name="basket_command_button">Commander</string>
+
+    <string name="signup">Inscription</string>
+    <string name="error">ERROR</string>
+    <string name="login">Login</string>
+    <string name="email">Adresse e-mail</string>
+    <string name="password">Mot de passe</string>
+    <string name="validate">Valider</string>
     <string name="name">Nom</string>
     <string name="surname">Prénom</string>
     <string name="address">Adresse</string>
-    <string name="mail">Email</string>
-    <string name="password">Mot de passe</string>
-    <string name="sign_in">"S'inscrire"</string>
-    <string name="log_in">Se connecter</string>
-    <string name="empty_field">Champ vide</string>
-    <string name="invalid_mail">Email Invalide</string>
-    <string name="error_pwd">Mot de passe trop court (8 caractères)</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="mail">Adresse e-mail</string>
+    <string name="your_command">Votre commande</string>
+    <string name="command_right">Votre commande a bien été prise en compte</string>
+    <string name="command_wrong">Erreur lors de la commande</string>
+    <string name="basket">Votre Panier</string>
+    <string name="account">Compte</string>
+    <string name="home">Accueil</string>
 </resources>

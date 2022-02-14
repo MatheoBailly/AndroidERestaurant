@@ -1,0 +1,40 @@
+package fr.isen.bailly.androiderestaurant.activity
+
+import android.content.Context
+import android.content.Intent
+import androidx.appcompat.app.AppCompatActivity
+import android.view.Menu
+import android.widget.TextView
+import androidx.core.view.isVisible
+import fr.isen.bailly.androiderestaurant.R
+
+open class MenuActivity : AppCompatActivity() {
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.menu, menu)
+        val basketMenu = menu.findItem(R.id.basket).actionView
+        val accountMenu = menu.findItem(R.id.account).actionView
+        val homeMenu = menu.findItem(R.id.home).actionView
+
+        val count = getSharedPreferences(
+            DetailActivity.APP_PREFS, Context.MODE_PRIVATE
+        ).getInt(DetailActivity.basketCount, 0)
+        val basketCountText = (basketMenu.findViewById(R.id.basketCount) as? TextView)
+        if (basketCountText != null) {
+            basketCountText.text = count.toString()
+        }
+        if (basketCountText != null) {
+            basketCountText.isVisible = count > 0
+        }
+
+        basketMenu.setOnClickListener {
+            startActivity(Intent(this,BasketActivity::class.java))
+        }
+        accountMenu.setOnClickListener{
+            startActivity(Intent(this,ConnectionActivity::class.java))
+        }
+        homeMenu.setOnClickListener {
+            startActivity(Intent(this,HomeActivity::class.java))
+        }
+        return true
+    }
+}
